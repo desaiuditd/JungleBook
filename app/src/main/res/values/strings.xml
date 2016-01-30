@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">JungleBook</string>
+    <string name="action_str_about">About</string>
+    <string name="action_str_uninstall">Uninstall</string>
+</resources>
