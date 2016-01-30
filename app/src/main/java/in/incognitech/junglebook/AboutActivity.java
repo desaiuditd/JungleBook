@@ -8,12 +8,12 @@ import android.view.MenuItem;
 
 import in.incognitech.junglebook.util.MenuController;
 
-public class MainActivity extends AppCompatActivity {
+public class AboutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
     }
@@ -29,4 +29,5 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return MenuController.handleMenuItemSelection( super.onOptionsItemSelected(item), item, this );
     }
+
 }
