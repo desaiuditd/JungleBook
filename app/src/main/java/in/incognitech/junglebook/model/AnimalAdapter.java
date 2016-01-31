@@ -53,7 +53,6 @@ public class AnimalAdapter extends ArrayAdapter<Animal> {
         try {
             ImageView imageView = (ImageView) row.findViewById(R.id.rowImage);
             InputStream inputStream = getContext().getAssets().open(animal.getImageURL());
-//            Drawable drawable = Drawable.createFromStream(inputStream, null);
             Bitmap bm = BitmapOptimizer.decodeSampledBitmapFromResource( parent.getResources(), inputStream, 40, 40 );
             imageView.setImageDrawable(new BitmapDrawable(parent.getResources(), bm));
 

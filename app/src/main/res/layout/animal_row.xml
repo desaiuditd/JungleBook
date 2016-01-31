@@ -10,11 +10,14 @@
         android:id="@+id/rowImage"/>
 
     <TextView
-        android:layout_margin="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Celebrity Name"
-        android:textSize="32dp"
+        android:text="Animal Name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/rowText" />
 
 </LinearLayout>

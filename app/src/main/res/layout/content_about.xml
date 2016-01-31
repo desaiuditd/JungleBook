@@ -38,6 +38,15 @@
             android:layout_below="@id/about_title"
             android:layout_marginTop="50dp"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/about_str_call"
+            android:id="@+id/about_call_us"
+            android:layout_alignTop="@+id/about_description"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="250dp"/>
+
     </RelativeLayout>
 
 </ScrollView>

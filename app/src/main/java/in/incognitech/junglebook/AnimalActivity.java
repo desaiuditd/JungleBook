@@ -37,15 +37,14 @@ public class AnimalActivity extends AppCompatActivity {
             title.setText(animal.getName());
             TextView desc = (TextView) findViewById(R.id.animal_description);
             desc.setText(animal.getDesc());
-//            try {
-//                ImageView imageView = (ImageView) findViewById(R.id.rowImage);
-//                InputStream inputStream = getAssets().open(animal.getImageURL());
-//            Drawable drawable = Drawable.createFromStream(inputStream, null);
-//                Bitmap bm = BitmapOptimizer.decodeSampledBitmapFromResource(getResources(), inputStream, 600, 400);
-//                imageView.setImageDrawable(new BitmapDrawable(getResources(), bm));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                ImageView imageView = (ImageView) findViewById(R.id.animal_image);
+                InputStream inputStream = getAssets().open(animal.getImageURL());
+                Bitmap bm = BitmapOptimizer.decodeSampledBitmapFromResource(getResources(), inputStream, 600, 400);
+                imageView.setImageDrawable(new BitmapDrawable(getResources(), bm));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
