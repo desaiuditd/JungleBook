@@ -1,16 +1,20 @@
 package in.incognitech.junglebook;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import in.incognitech.junglebook.model.Animal;
+import in.incognitech.junglebook.model.AnimalAdapter;
 import in.incognitech.junglebook.util.MenuController;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,14 +26,35 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        String[] items = {"bat", "cat", "rat", "elephant", "panda", "dodo", "snake", "monkey", "cow", "buffalo", "lizzard", "man" };
+        String[] items = {
+            "bat",
+            "cat",
+            "rat",
+            "elephant",
+            "panda",
+            "frog",
+            "snake",
+            "monkey",
+            "cow",
+            "lion",
+            "tiger",
+            "man"
+        };
         ListView listView = (ListView) findViewById(R.id.list_view_animal);
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        listView.setAdapter(itemAdapter);
+
+        List<Animal> animalList = new ArrayList<Animal>();
+        String desc = getResources().getString( R.string.about_str_app_desc );
+        for (String item : items) {
+            animalList.add( new Animal( item, desc, item+".jpg" ) );
+        }
+
+        listView.setAdapter(new AnimalAdapter(this,R.layout.animal_row,animalList));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d("COEN268", "Clicked position: " + position);
+                Intent i = new Intent(getApplicationContext(), AnimalActivity.class);
+                i.putExtra("animal_id",position);
+                startActivity(i);
             }
         });
     }

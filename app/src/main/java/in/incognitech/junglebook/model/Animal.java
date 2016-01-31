@@ -9,6 +9,12 @@ public class Animal {
     private String desc;
     private String imageURL;
 
+    public Animal(String name, String desc, String imageURL) {
+        this.name = name;
+        this.desc = desc;
+        this.imageURL = imageURL;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,5 +37,9 @@ public class Animal {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String toString() {
+        return this.getName()+this.getDesc()+this.getImageURL();
     }
 }

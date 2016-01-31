@@ -3,6 +3,8 @@ package in.incognitech.junglebook.util;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +28,6 @@ public class MenuController {
             case R.id.action_about:
                 if ( parent.getClass() != AboutActivity.class ) {
                     parent.startActivity(new Intent(parent, AboutActivity.class));
-                    parent.finish();
                     returnFlag = true;
                 } else {
                     Toast.makeText(parent.getApplicationContext(),"You're aleady on About page", Toast.LENGTH_LONG).show();
@@ -38,6 +39,9 @@ public class MenuController {
                 parent.startActivity(uninstallIntent);
                 returnFlag = true;
                 break;
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(parent);
+                returnFlag = true;
         }
 
         return returnFlag;
