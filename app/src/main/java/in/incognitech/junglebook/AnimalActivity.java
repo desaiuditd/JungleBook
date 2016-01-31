@@ -32,7 +32,7 @@ public class AnimalActivity extends AppCompatActivity {
         if (extras != null) {
             int animalID = extras.getInt("animal_id");
             Animal animal = AnimalAdapter.getAnimalList().get(animalID);
-            System.out.println(animal);
+            this.getSupportActionBar().setTitle(getResources().getString(R.string.app_name)+ " - " + animal.getName());
             TextView title = (TextView) findViewById(R.id.animal_title);
             title.setText(animal.getName());
             TextView desc = (TextView) findViewById(R.id.animal_description);
