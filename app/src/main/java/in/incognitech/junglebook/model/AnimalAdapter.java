@@ -24,6 +24,11 @@ public class AnimalAdapter extends ArrayAdapter<Animal> {
 
     private static List<Animal> animalList;
 
+    static class ViewHolder {
+        TextView textView;
+        ImageView imageView;
+    }
+
     public static List<Animal> getAnimalList() {
         return animalList;
     }
@@ -42,19 +47,29 @@ public class AnimalAdapter extends ArrayAdapter<Animal> {
 
         Animal animal = AnimalAdapter.getAnimalList().get(position);
 
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.animal_row, null);
+        View row;
+        ViewHolder holder;
+
+        if ( convertView == null ) {
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            row = inflater.inflate(R.layout.animal_row, null);
+            holder = new ViewHolder();
+            holder.imageView = (ImageView) row.findViewById(R.id.rowImage);
+            holder.textView = (TextView) row.findViewById(R.id.rowText);
+            row.setTag(holder);
+        } else {
+            row = convertView;
+            holder = (ViewHolder) row.getTag();
+        }
 
         // Set the text
-        TextView textView = (TextView) row.findViewById(R.id.rowText);
-        textView.setText(animal.getName());
+        holder.textView.setText(animal.getName());
 
         // Set the image
         try {
-            ImageView imageView = (ImageView) row.findViewById(R.id.rowImage);
             InputStream inputStream = getContext().getAssets().open(animal.getImageURL());
             Bitmap bm = BitmapOptimizer.decodeSampledBitmapFromResource( parent.getResources(), inputStream, 40, 40 );
-            imageView.setImageDrawable(new BitmapDrawable(parent.getResources(), bm));
+            holder.imageView.setImageDrawable(new BitmapDrawable(parent.getResources(), bm));
 
         } catch (IOException e) {
             e.printStackTrace();
