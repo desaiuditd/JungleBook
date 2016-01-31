@@ -48,13 +48,19 @@ public class MainActivity extends AppCompatActivity {
             animalList.add( new Animal( item, desc, item+".jpg" ) );
         }
 
-        listView.setAdapter(new AnimalAdapter(this,R.layout.animal_row,animalList));
+        listView.setAdapter(new AnimalAdapter(this, R.layout.animal_row, animalList));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(getApplicationContext(), AnimalActivity.class);
-                i.putExtra("animal_id",position);
-                startActivity(i);
+                if ( position == AnimalAdapter.getAnimalList().size() - 1 ) {
+                    ScaryDialog dialog = new ScaryDialog();
+                    dialog.setAnimalID(position);
+                    dialog.show( MainActivity.this.getFragmentManager(), getResources().getString(R.string.app_name) );
+                } else {
+                    Intent i = new Intent(getApplicationContext(), AnimalActivity.class);
+                    i.putExtra("animal_id", position);
+                    startActivity(i);
+                }
             }
         });
     }

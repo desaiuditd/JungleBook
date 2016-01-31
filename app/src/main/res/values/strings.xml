@@ -10,4 +10,7 @@ Pellentesque posuere. Donec mollis hendrerit risus. Praesent blandit laoreet nib
 
 In turpis. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Praesent nec nisl a purus blandit viverra. Etiam rhoncus.</string>
     <string name="about_str_call">Call Us !</string>
+    <string name="animal_dialog_message">OMG ! CAUTION: This animal is very very scary. Do you want to proceed ?</string>
+    <string name="animal_dialog_proceed">Proceed</string>
+    <string name="animal_dialog_cancel">Cancel</string>
 </resources>
